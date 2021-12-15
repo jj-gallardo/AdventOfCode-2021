@@ -6,5 +6,5 @@ public interface IProblem
     ///     Solve the problem and returns the problem result.
     /// </summary>
     /// <returns>The problem result.</returns>
-    public string Solve();
+    public string GetSolution();
 }

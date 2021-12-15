@@ -1,19 +1,19 @@
 ﻿using AdventOfCode2021.InputLoaders;
 
-namespace AdventOfCode2021.Problems.Day1.SonarSweep;
+namespace AdventOfCode2021.Problems.Day1;
 
-public class SonarSweepProblem : BaseProblem
+public class SonarSweepPartOneProblem : BaseProblem<int>
 {
     /// <summary>
     ///     https://adventofcode.com/2021/day/1
     /// </summary>
-    public SonarSweepProblem(IInputLoader inputLoader) : base(inputLoader)
+    public SonarSweepPartOneProblem(IInputLoader inputLoader) : base(inputLoader)
     {
     }
 
-    public override string Solve()
+    protected override string Solve(IEnumerable<int> inputs)
     {
-        int[] sonarSweepReport = GetInput().Select(int.Parse).ToArray();
+        int[] sonarSweepReport = inputs.ToArray();
 
         var increasesCounter = 0;
         for (var i = 1; i < sonarSweepReport.Length; i++)
@@ -23,5 +23,10 @@ public class SonarSweepProblem : BaseProblem
             }
 
         return increasesCounter.ToString();
+    }
+
+    protected override int ParseInput(string inputLine)
+    {
+        return int.Parse(inputLine);
     }
 }

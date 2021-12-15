@@ -1,21 +1,26 @@
 ﻿using AdventOfCode2021.InputLoaders;
 
-namespace AdventOfCode2021.Problems.Day1.SonarSweep2;
+namespace AdventOfCode2021.Problems.Day1;
 
-public class SonarSweep2Problem : BaseProblem
+public class SonarSweepPartTwoProblem : BaseProblem<int>
 {
     private const int SlidingWindowSize = 3;
 
     /// <summary>
     ///     https://adventofcode.com/2021/day/1#part2
     /// </summary>
-    public SonarSweep2Problem(IInputLoader inputLoader) : base(inputLoader)
+    public SonarSweepPartTwoProblem(IInputLoader inputLoader) : base(inputLoader)
     {
     }
 
-    public override string Solve()
+    private int GetWindowValue(int[] sonarSweepReport, int position)
     {
-        int[] sonarSweepReport = GetInput().Select(int.Parse).ToArray();
+        return sonarSweepReport.Take(..(position + SlidingWindowSize)).Sum();
+    }
+
+    protected override string Solve(IEnumerable<int> inputs)
+    {
+        int[] sonarSweepReport = inputs.ToArray();
 
         var increasesCounter = 0;
         int windowPreviousValue = GetWindowValue(sonarSweepReport, 0);
@@ -36,8 +41,8 @@ public class SonarSweep2Problem : BaseProblem
         return increasesCounter.ToString();
     }
 
-    private int GetWindowValue(int[] sonarSweepReport, int position)
+    protected override int ParseInput(string inputLine)
     {
-        return sonarSweepReport.Take(..(position + SlidingWindowSize)).Sum();
+        return int.Parse(inputLine);
     }
 }
