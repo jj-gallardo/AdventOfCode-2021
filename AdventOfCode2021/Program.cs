@@ -2,6 +2,7 @@
 using AdventOfCode2021.Problems;
 using AdventOfCode2021.Problems.Day1;
 using AdventOfCode2021.Problems.Day2;
+using AdventOfCode2021.Problems.Day3;
 
 IProblem GetProblem(string? problemKey)
 {
@@ -12,6 +13,9 @@ IProblem GetProblem(string? problemKey)
 
         "2.1" => new DivePartOneProblem(new FileInputLoader("Problems/Day2/input.txt")),
         "2.2" => new DivePartTwoProblem(new FileInputLoader("Problems/Day2/input.txt")),
+        
+        "3.1" => new BinaryDiagnosticPartOneProblem(new FileInputLoader("Problems/Day3/input.txt")),
+        "3.2" => new BinaryDiagnosticPartTwoProblem(new FileInputLoader("Problems/Day3/input.txt")),
 
         _ => throw new ArgumentException("Problem not found")
     };
