@@ -2,7 +2,7 @@
 
 namespace AdventOfCode2021.Problems.Day1;
 
-public class SonarSweepPartOneProblem : BaseProblem<int>
+public class SonarSweepPartOneProblem : BaseProblem<IEnumerable<int>>
 {
     /// <summary>
     ///     https://adventofcode.com/2021/day/1
@@ -25,8 +25,8 @@ public class SonarSweepPartOneProblem : BaseProblem<int>
         return increasesCounter.ToString();
     }
 
-    protected override int ParseInput(string inputLine)
+    protected override IEnumerable<int> ParseInput(IEnumerable<string> inputLines)
     {
-        return int.Parse(inputLine);
+        return inputLines.Select(int.Parse);
     }
 }

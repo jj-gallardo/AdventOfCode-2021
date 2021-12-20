@@ -2,7 +2,7 @@
 
 namespace AdventOfCode2021.Problems.Day1;
 
-public class SonarSweepPartTwoProblem : BaseProblem<int>
+public class SonarSweepPartTwoProblem : BaseProblem<IEnumerable<int>>
 {
     private const int SlidingWindowSize = 3;
 
@@ -41,8 +41,8 @@ public class SonarSweepPartTwoProblem : BaseProblem<int>
         return increasesCounter.ToString();
     }
 
-    protected override int ParseInput(string inputLine)
+    protected override IEnumerable<int> ParseInput(IEnumerable<string> inputLines)
     {
-        return int.Parse(inputLine);
+        return inputLines.Select(int.Parse);
     }
 }

@@ -7,7 +7,7 @@ using NSubstitute;
 
 using NUnit.Framework;
 
-namespace AdventOfCode2021.Tests.Problems.Day1;
+namespace AdventOfCode2021.Tests.Problems.Day3;
 
 [TestFixture]
 public class BinaryDiagnosticProblemTests

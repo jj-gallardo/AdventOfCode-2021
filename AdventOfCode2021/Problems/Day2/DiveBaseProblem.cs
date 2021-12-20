@@ -11,7 +11,7 @@ public enum CommandDirection
     Down
 }
 
-public abstract class DiveBaseProblem : BaseProblem<Command>
+public abstract class DiveBaseProblem : BaseProblem<IEnumerable<Command>>
 {
     /// <summary>
     ///     https://adventofcode.com/2021/day/2
@@ -20,9 +20,12 @@ public abstract class DiveBaseProblem : BaseProblem<Command>
     {
     }
 
-    protected override Command ParseInput(string inputLine)
+    protected override IEnumerable<Command> ParseInput(IEnumerable<string> inputLines)
     {
-        string[] commandParts = inputLine.Split(' ');
-        return new Command(Enum.Parse<CommandDirection>(commandParts[0], true), int.Parse(commandParts[1]));
+        return inputLines.Select(inputLine =>
+        {
+            string[] commandParts = inputLine.Split(' ');
+            return new Command(Enum.Parse<CommandDirection>(commandParts[0], true), int.Parse(commandParts[1]));
+        });
     }
 }

@@ -4,7 +4,7 @@ using AdventOfCode2021.InputLoaders;
 
 namespace AdventOfCode2021.Problems.Day3;
 
-public class BinaryDiagnosticPartTwoProblem : BaseProblem<bool[]>
+public class BinaryDiagnosticPartTwoProblem : BaseProblem<IEnumerable<bool[]>>
 {
     public BinaryDiagnosticPartTwoProblem(IInputLoader inputLoader) : base(inputLoader)
     {
@@ -63,9 +63,12 @@ public class BinaryDiagnosticPartTwoProblem : BaseProblem<bool[]>
         return FilterByCommonValues(result,commonBitSelectorFunction, (position + 1));
     }
 
-    protected override bool[] ParseInput(string inputLine)
+    protected override IEnumerable<bool[]> ParseInput(IEnumerable<string> inputLines)
     {
-        return (inputLine.Select(c => c.CompareTo('1') == 0).ToArray());
+        return inputLines.Select(inputLine =>
+        {
+            return (inputLine.Select(c => c.CompareTo('1') == 0).ToArray());
+        });
     }
 
     int GetDecimalValue(bool[] bitArray)

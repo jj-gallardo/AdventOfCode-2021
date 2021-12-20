@@ -2,7 +2,7 @@
 
 namespace AdventOfCode2021.Problems;
 
-public abstract class BaseProblem<T> : IProblem
+public abstract class BaseProblem<TInput> : IProblem
 {
     private readonly IInputLoader _inputLoader;
 
@@ -13,13 +13,13 @@ public abstract class BaseProblem<T> : IProblem
 
     public string GetSolution()
     {
-        IEnumerable<T> parsedInput = GetInput().Select(ParseInput);
+        TInput parsedInput = ParseInput(GetInput());
         return Solve(parsedInput);
     }
 
-    protected abstract string Solve(IEnumerable<T> inputs);
+    protected abstract string Solve(TInput input);
 
-    protected abstract T ParseInput(string inputLine);
+    protected abstract TInput ParseInput(IEnumerable<string> inputLines);
 
     protected IEnumerable<string> GetInput()
     {
